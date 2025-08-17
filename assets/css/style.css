@@ -2,7 +2,73 @@
   width: 100%;
   height: 80vh;
   object-fit: cover;
-  object-position: center -75px; /* default untuk desktop */
+  object-position: center -85px; /* default untuk desktop */
+}
+
+.hero-header {
+  position: relative;
+  height: 70vh; /* sesuaikan tinggi hero */
+  overflow: hidden;
+}
+
+/* Gradient overlay atas & bawah */
+.hero-header::before,
+.hero-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100px; /* tinggi gradient */
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-header::before {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0));
+}
+
+.hero-header::after {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0));
+}
+
+/* Optional: jika ingin teks di atas video */
+.hero-header h1,
+.hero-header p {
+  position: relative;
+  z-index: 3;
+  color: black; /* atau putih sesuai video */
+}
+
+.join-section {
+  background: #f8f9fa; /* Warna bg-light Bootstrap */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient atas */
+.join-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px; /* tinggi gradient */
+  background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0));
+  pointer-events: none;
+}
+
+/* Gradient bawah */
+.join-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px; /* tinggi gradient */
+  background: linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0));
+  pointer-events: none;
 }
 
 /* Untuk HP (layar max 768px) */
@@ -21,6 +87,28 @@
   }
 }
 
+.highlight-section {
+  background: url('assets/img/background.jpg') center/cover no-repeat; /* opsional: background di belakang blur */
+  padding: 5rem 0;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.2); /* transparan untuk efek kaca */
+  border-radius: 15px;
+  padding: 2rem;
+  border: 1px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(15px); /* Gaussian blur yang lebih kuat */
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Efek hover supaya lebih hidup */
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
 .navbar {
   position: fixed;      /* melayang */
   top: 0;              
@@ -37,10 +125,10 @@
 }
 
 body {
-  padding-top: 0; /* hapus padding */
+  padding-top: 5px; /* hapus padding */
 }
 
 .hero {
-  margin-top: 70px; /* geser section pertama aja, bukan semua body */
+  margin-top: 50px; /* geser section pertama aja, bukan semua body */
 }
 
