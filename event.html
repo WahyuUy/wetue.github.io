@@ -7,28 +7,82 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
-    /* Flex layout agar footer selalu di bawah */
+    /* Full-page layout */
     body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      color: black;
+      position: relative;
+      overflow-x: hidden;
     }
     main {
-      flex: 1; /* Konten utama mengambil space yang tersisa */
+      flex: 1;
+      position: relative;
+      z-index: 2; /* agar konten di atas video */
+      padding-top: 60px; /* tinggi navbar */
+    }
+
+    /* Video background full page */
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      filter: blur(8px);
+      opacity: 0.7;
+    }
+
+    /* Overlay transparan (opsional) */
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background: rgba(0,0,0,0); /* biar blur tetap kelihatan */
+    }
+
+    /* Card Event */
+    .event-card {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 15px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .event-card:hover {
+      transform: translateZ(-100px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.50);
     }
   </style>
 </head>
-<body class="bg-white text-black">
+<body>
+
+<!-- Video Background -->
+<video autoplay muted loop playsinline class="bg-video">
+  <source src="assets/img/w2ebanner.mp4" type="video/mp4">
+</video>
+<div class="video-overlay"></div>
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg px-3">
   <a class="navbar-brand d-flex align-items-center" href="index.html">
-    <img src="assets/img/output.gif" alt="Logo Apple" style="height:40px; width:auto;">
+<img src="assets/img/output.gif" alt="Logo Apple" style="height:40px; width:auto;">
+
     <span class="fw-bold text-black ms-2">Way 2 Eternal</span>
   </a>
+
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
     <span class="navbar-toggler-icon"></span>
   </button>
+
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ms-auto">
       <li class="nav-item"><a class="nav-link text-black" href="index.html">Home</a></li>
@@ -38,70 +92,40 @@
     </ul>
   </div>
 </nav>
-
 <!-- Konten Utama -->
 <main>
-  <!-- Hero Section Kosong (opsional bisa pakai gambar/video) -->
-  <header class="text-center py-3">
-  </header>
+  <div class="container text-center py-5">
+    <h1 class="display-4 fw-bold">Event Komunitas</h1>
+    <p class="lead">Temukan event terbaru dan ikut keseruan komunitas kami!</p>
 
-  <!-- Konten Event -->
-  <section class="py-5">
-    <div class="container">
-      <h2 class="fw-bold text-center mb-4">Event Komunitas</h2>
-      <div class="table-responsive">
-        <table class="table table-bordered text-center align-middle">
-          <thead class="table-dark">
-            <tr>
-              <th scope="col">Tanggal</th>
-              <th scope="col">Nama Event</th>
-              <th scope="col">Deskripsi</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="table-light">
-              <td>Dummy</td>
-              <td>Dummy</td>
-              <td>Dummy</td>
-            </tr>
-            <tr class="table-secondary">
-              <td>Dummy</td>
-              <td>Dummy</td>
-              <td>Dummy</td>
-            </tr>
-            <tr class="table-light">
-              <td>Dummy</td>
-              <td>Dummy</td>
-              <td>Dummy</td>
-            </tr>
-            <tr class="table-secondary">
-              <td>Dummy</td>
-              <td>Dummy</td>
-              <td>Dummy</td>
-            </tr>
-            <tr class="table-light">
-              <td>Dummy</td>
-              <td>Dummy</td>
-              <td>Dummy</td>
-            <tr class="table-secondary">
-              <td>Dummy</td>
-              <td>Dummy</td>
-              <td>Dummy</td>
-            </tr>
-            <tr class="table-light">
-              <td>Dummy</td>
-              <td>Dummy</td>
-              <td>Dummy</td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="row g-4 mt-4">
+      <!-- Event Card 1 -->
+      <div class="col-md-4">
+        <div class="event-card p-4">
+          <h5 class="fw-bold">Dummy</h5>
+          <p>Dummy</p>
+        </div>
+      </div>
+      <!-- Event Card 2 -->
+      <div class="col-md-4">
+        <div class="event-card p-4">
+          <h5 class="fw-bold">Dummy</h5>
+          <p>Dummy</p>
+        </div>
+      </div>
+      <!-- Event Card 3 -->
+      <div class="col-md-4">
+        <div class="event-card p-4">
+          <h5 class="fw-bold">Dummy</h5>
+          <p>Dummy</p>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 </main>
 
 <!-- Footer -->
-<footer class="text-center py-4">
+<footer class="text-center py-4 bg-white bg-opacity-75">
   <p class="small">© 2025 Way 2 Eternal</p>
 </footer>
 

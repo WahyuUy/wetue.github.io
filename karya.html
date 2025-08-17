@@ -6,18 +6,83 @@
   <title>Karya - Way 2 Eternal</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* Full-page layout */
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      color: black;
+      position: relative;
+      overflow-x: hidden;
+    }
+    main {
+      flex: 1;
+      position: relative;
+      z-index: 2; /* agar konten di atas video */
+      padding-top: 60px; /* tinggi navbar */
+    }
+
+    /* Video background full page */
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      filter: blur(8px);
+      opacity: 0.7;
+    }
+
+    /* Overlay transparan (opsional) */
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background: rgba(0,0,0,0); /* biar blur tetap kelihatan */
+    }
+
+    /* Card Event */
+    .event-card {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 15px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .event-card:hover {
+      transform: translateZ(-100px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.50);
+    }
+  </style>
 </head>
-<body class="bg-white text-black">
+<body>
+
+<!-- Video Background -->
+<video autoplay muted loop playsinline class="bg-video">
+  <source src="assets/img/w2ebanner.mp4" type="video/mp4">
+</video>
+<div class="video-overlay"></div>
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg px-3">
   <a class="navbar-brand d-flex align-items-center" href="index.html">
-    <img src="assets/img/output.gif" alt="Logo Apple" style="height:40px; width:auto;">
+<img src="assets/img/output.gif" alt="Logo Apple" style="height:40px; width:auto;">
+
     <span class="fw-bold text-black ms-2">Way 2 Eternal</span>
   </a>
+
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
     <span class="navbar-toggler-icon"></span>
   </button>
+
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ms-auto">
       <li class="nav-item"><a class="nav-link text-black" href="index.html">Home</a></li>
@@ -27,26 +92,40 @@
     </ul>
   </div>
 </nav>
+<!-- Konten Utama -->
+<main>
+  <div class="container text-center py-5">
+    <h1 class="display-4 fw-bold">Karya Komunitas</h1>
+    <p class="lead">Temukan karya dari komunitas kami!</p>
 
-<!-- Hero Section Kosong -->
-<header class="text-center py-5">
-  <h1 class="display-4 fw-bold">Karya Komunitas</h1>
-  <p class="lead">Lihat hasil karya kreatif dari anggota komunitas kami!</p>
-</header>
-
-<!-- Konten Karya -->
-<section class="py-5">
-  <div class="container text-center">
-    <div class="row g-4">
-      <div class="col-md-4"><div class="p-5 border border-dark rounded">Game Showcase 1</div></div>
-      <div class="col-md-4"><div class="p-5 border border-dark rounded">Game Showcase 2</div></div>
-      <div class="col-md-4"><div class="p-5 border border-dark rounded">Game Showcase 3</div></div>
+    <div class="row g-4 mt-4">
+      <!-- Event Card 1 -->
+      <div class="col-md-4">
+        <div class="event-card p-4">
+          <h5 class="fw-bold">Dummy</h5>
+          <p>Dummy</p>
+        </div>
+      </div>
+      <!-- Event Card 2 -->
+      <div class="col-md-4">
+        <div class="event-card p-4">
+          <h5 class="fw-bold">Dummy</h5>
+          <p>Dummy</p>
+        </div>
+      </div>
+      <!-- Event Card 3 -->
+      <div class="col-md-4">
+        <div class="event-card p-4">
+          <h5 class="fw-bold">Dummy</h5>
+          <p>Dummy</p>
+        </div>
+      </div>
     </div>
   </div>
-</section>
+</main>
 
 <!-- Footer -->
-<footer class="text-center py-4 border-top border-dark">
+<footer class="text-center py-4 bg-white bg-opacity-75">
   <p class="small">© 2025 Way 2 Eternal</p>
 </footer>
 
