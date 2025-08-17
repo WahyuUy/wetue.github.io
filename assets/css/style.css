@@ -131,3 +131,10 @@ body {
 .hero {
   margin-top: 50px; /* geser section pertama aja, bukan semua body */
 }
+
+/* Terapkan font Poppins ke navbar */
+.navbar, 
+.navbar .navbar-brand, 
+.navbar .nav-link {
+  font-family: 'Poppins', sans-serif;
+}
